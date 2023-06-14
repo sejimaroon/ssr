@@ -1,10 +1,13 @@
+/*import { renderToString } from "react-dom/server";*/
+
 const React = require('react');
 require('./App.css');
 const {  Router, Routes, Route } = require('react-router-dom');
 const Home = require('../src/pages/Home').default;
 const About = require('../src/pages/About').default;
-const Error = require('../src/pages/Error').default;
+const Err = require('../src/pages/Err').default;
 const homeUrl = process.env.PUBLIC_URL;
+
 
 
 function App() {
@@ -13,7 +16,7 @@ function App() {
 　　　　　　<Routes>
 　　　　　　　　<Route path={ homeUrl } element={<Home />} />
 　　　　　　　　<Route path={ homeUrl + "/about" } element={<About />} />
-　　　　　　　　<Route path="*" element={<Error />} />
+　　　　　　　　<Route path="*" element={<Err />} />               
 　　　　　　</Routes>
 　　　　</Router>
 　　);
@@ -23,7 +26,7 @@ export default App;
 
 
 /*
-const App = () => (`
+const App = ():string => (`
   <html>
     <head>
       <title>CountUp</title>
@@ -34,8 +37,8 @@ const App = () => (`
         ${renderToString(<Home />)}
         ${renderToString(<About />)}
         ${renderToString(<Err />)}
-
       </div>
+      <script src="./client.js"></script>
     </body>
   </html>
 `);

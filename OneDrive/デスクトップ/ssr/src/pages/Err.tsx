@@ -1,4 +1,6 @@
 import React from "react";
+/*const Err =() : JSX.Element =>{*/
+
 function Err() {
 　　return (
 　　　　<div className="App">

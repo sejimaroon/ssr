@@ -16,8 +16,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.12.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4",
-    "@babel/plugin-proposal-private-property-in-object": "7.21.0-placeholder-for-preset-env.2"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "predeploy": "npm run build",
@@ -27,7 +26,11 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "postbuild": "copy build\\index.html build\\404.html",
-    "wp":"webpack --mode production"
+    "wp":"webpack --mode production",
+    "ssrbuild": "webpack --config webpack.config.server.js&&webpack --config webpack.config.client.js",
+    "ssrstart": "npm run build&&node dist/server.js",
+    "view": "babel src -x '.ts,.tsx' -d views",
+    "wpdev": "webpack --mode development"
   },
   "eslintConfig": {
     "extends": [

@@ -1,5 +1,6 @@
 import React from "react";
-function About() {
+/*const About =() : JSX.Element =>{*/
+function About () {
 　　return (
 　　　　<div className="App">
 　　　　　　<header className="App-header">
