@@ -1,0 +1,109 @@
+.main-footer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 80px;
+  background-color: #333;
+  color: white;
+  padding: 0 1.125rem;
+  margin-top: 80px;
+  .footer__contents {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .footer__list {
+    display: flex;
+    flex-direction: row;
+    column-gap: 16px;
+  }
+  nav {
+    /* デフォルトでは非表示 */
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background-color: #333;
+    transition: all 0.3s ease;
+    z-index: 999;
+
+    &.show {
+      display: block; /* メニューを表示 */
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column; /* 縦並びに変更 */
+      padding: 0;
+
+      li {
+        text-align: center;
+        padding: 1rem 0;
+
+        a {
+          color: white;
+          text-decoration: none;
+
+          &:hover {
+            background-color: #555;
+          }
+        }
+      }
+    }
+  }
+
+  .hamburger {
+    display: none; /* デフォルトは非表示 */
+    flex-direction: column;
+    justify-content: space-around;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+
+    span {
+      display: block;
+      width: 100%;
+      height: 4px;
+      background-color: #fff;
+      border-radius: 2px;
+      transition: all 0.3s ease; /* トランジション追加 */
+    }
+
+    &.active span:nth-child(1) {
+      transform: rotate(45deg) translate(7.5px, 7.5px); /* 上のスパンを斜めに */
+    }
+
+    &.active span:nth-child(2) {
+      opacity: 0; /* 中央のスパンを非表示 */
+    }
+
+    &.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(10px, -10px); /* 下のスパンを斜めに */
+    }
+  }
+  @media (max-width: 767.9px) {
+    .footer__list-pc {
+      display: none;
+    }
+    .hamburger {
+      display: flex; /* 画面幅768px未満の時に表示 */
+    }
+  
+    nav {
+      /* 初期状態は非表示 */
+      display: none;
+      &.show {
+        display: block; /* メニューを表示 */
+      }
+    }
+  }
+}
+

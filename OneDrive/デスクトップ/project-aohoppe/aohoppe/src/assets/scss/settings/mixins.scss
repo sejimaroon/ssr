@@ -1,0 +1,18 @@
+// テーマカラー変数
+$theme-color: #1E78FE;
+
+// ヘディングスタイル用のmixin
+@mixin heading-style {
+  font-family: 'Hannari', serif;
+  font-weight: bold;
+  color: $theme-color;
+}
+
+// h1〜h6までに共通のスタイルを適用
+h1, h2, h3, h4, h5, h6 {
+  @include heading-style;
+}
+
+@mixin hannari {
+  font-family: 'Hannari', serif;
+}

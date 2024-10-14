@@ -1,0 +1,116 @@
+@use "../settings/mixins.scss";
+
+.main-header {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 80px;
+  background-color: transparent;
+  color: #1E78fE;
+  padding: 0 1.125rem;
+  z-index: 1000;
+  .header__contents {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .header__list-pc {
+    @include mixins.hannari;
+    display: flex;
+    flex-direction: row;
+    column-gap: 16px;
+  }
+  nav {
+    /* デフォルトでは非表示 */
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #333;
+    transition: all 0.3s ease;
+    z-index: 999;
+
+    &.show {
+      display: block; /* メニューを表示 */
+    }
+
+    ul {
+
+      list-style: none;
+      display: flex;
+      flex-direction: column; /* 縦並びに変更 */
+      padding: 0;
+      
+      li {
+        text-align: center;
+        padding: 1rem 0;
+
+        a {
+          @include mixins.hannari;
+          color: #1E78fE;
+          text-decoration: none;
+
+          &:hover {
+            background-color: #555;
+          }
+        }
+      }
+    }
+  }
+
+  .hamburger {
+    display: none; /* デフォルトは非表示 */
+    flex-direction: column;
+    justify-content: space-around;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+
+    span {
+      display: block;
+      width: 100%;
+      height: 4px;
+      background-color: $theme-color;
+      border-radius: 2px;
+      transition: all 0.3s ease; /* トランジション追加 */
+    }
+
+    &.active span:nth-child(1) {
+      transform: rotate(45deg) translate(7.5px, 7.5px); /* 上のスパンを斜めに */
+    }
+
+    &.active span:nth-child(2) {
+      opacity: 0; /* 中央のスパンを非表示 */
+    }
+
+    &.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(10px, -10px); /* 下のスパンを斜めに */
+    }
+  }
+  @media (max-width: 767.9px) {
+    .header__list-pc {
+      display: none;
+    }
+    .hamburger {
+      display: flex; /* 画面幅768px未満の時に表示 */
+      z-index: 1000;
+    }
+  
+    nav {
+      /* 初期状態は非表示 */
+      display: none;
+      padding: calc(10% + 80px) 0 10%;
+      &.show {
+        display: block; /* メニューを表示 */
+      }
+    }
+  }
+}
+
